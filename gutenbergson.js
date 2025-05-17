@@ -47,6 +47,22 @@ var apply = (f, ...args) => {
 };
 
 var procedure$Qu = x => typeof(x) == 'function';
+
+var slot$Mnref = (x, prop) => symbol$Qu(prop)
+    ? x[symbol$Mn$Gtstring(prop)]
+    : x[prop];
+
+var slot$Mnset$Ex = (x, prop, v) => {
+    if (symbol$Qu(prop)) {
+	x[symbol$Mn$Gtstring(prop)] = v;
+    } else {
+	x[prop] = v;
+    }
+};
+
+var with$Mnslot$Qu = (x, name) => symbol$Qu(name)
+    ? (symbol$Mn$Gtstring(name) in x)
+    : (name in x);
 var improper$Qu = x => typeof(x) == 'object'
     && typeof(x.improper) != 'undefined'
     && Array.isArray(x.improper)
@@ -473,13 +489,13 @@ var invalid$Mnexample =
 		    actual, "\n"))
 
 var valid$Mnexample =
-    make$Mnparameter((expression, actual, expected) => actual)
-
-var slot$Mnref = (x, prop) => x[symbol$Mn$Gtstring(prop)];
-var slot$Mnset$Ex = (x, prop, v) => x[symbol$Mn$Gtstring(prop)] = v;
+    make$Mnparameter((expression, actual, expected) => actual);
 var min = Math.min;
+
 var max = Math.max;
-var chapters = list(string$Mnsplit("Pat Panackelty\n\nAs you descend from hypnagogia\ninto blissful slumber - a more\nchiseled and defined version of the\ndream-like world appears in front of\nyou. One that is, so to speak, more\nreal, and more true to the inherent\nquality of fantasy worlds: limited\nonly by the boundaries of imagination.\n\nAt first, you fly high in the sky,\nonly occasionally seeing the cloudy\ncurtain reveal worlds of intriguing\nbeauty, resplendent colors,\nfantastical beings and nature with\nmonumental wonders of oddly-shaped\narchitecture.\n\nYou let them come and go as easily\nas they appear, but only after you've\nbreathed their essence, and the\nsequence of their appearance seems\nto make sense to you on some level,\neven though they are so much\ndifferent from one another, and it\nfeels like it's not really you\nwho controls what and when is being\nrevealed.\n\nYou bathe in the pleasant visions\nfor what feels like eons almost\ndissolving in the end. Who are you?\nYou forgot!\n\nPat Panackelty\n","\n"),string$Mnsplit("You descend onto a desert, and thump gently\nonto the ground. A few moments pass, and\nonly a tumbleweed clutters the never-ending\nvastness of the landscape. You are starting\nto get a little bored when suddenly - what\nappears to be a portal - expands vertically.\nOnce it's about human size a man jumps out\nof it holding a sewing machine under his arm.\n\nA sewing machine is a device for linking\npieces of fabric together. But you already\nknew that, right?\n\nHe brushes off some dust of his beautiful,\nbut a little flashy suit, then looks down\nat his watch, and before you can utter a word,\njumps quickly into another portal appearing\nright in from of him.\n\nYou feel mildly disappointed. However, not\na second has passed when a portal behind\nyou opened up, you turn around and see the\nvery same man, this time dropping his\nmachine as he falls on his hands and knees.\nYou notice an arrow pierced through his\nfleece, he appears unharmed though. He\nstands up vigorously dusting the suit off,\nvisibly angry.                                              \n\n\"Hello\" - you say                                                                     \nHe turns his eyes up towards you briefly,\nthen continues to groom himself.\n\n\"Hello!\" - you say a little louder\n\n\"I'm quite busy here...\"\n\n\"What are you doing?\" \n\n\"See these?\" He points at one of the \nportals that constantly reappear in various\nplaces at random intervals. \"These are portals\nto other worlds\"\n\n\"You mean fantasy worlds?\"\n\n\"No, no\" seems to have calmed down now\nthat he's grabbed your attention.\"These\nhead to different time periods of this\nplanet\"\n\n\"And what is this?\" you pretend you didn't\nknow.      \n\n\"Oh, it's a sewing machine. I've been trying\nto sell it\"\n\nHe turns his glance toward the the arrow\nangrily, but not as much as last time, and\nremoves it.\n\n\"It hasn't been going very well, has it?\"\nyou pause. \"You do this everyday?\"\n\n\"Yeah that's what I do\"\n\n\"I must say, it's very impressive\"\n\n\"Oh yeah?\"\n\n\"What happened?\"\n\n\"I was trying to get a few trinkets for\nit from a brute who tried to apply it on\nleather. I tried to tell him to stop, but\nhe was a little overenthusiastic to try it\nout.\"\n\n\"Good thing you're OK\"\n\nThe salesman straigthens out, and had a\nslight expression of worry on his face,\nbut very quickly smiled.\n\n\"I was in the wrong time period\"\n\nA portal opens up, horizontally this \ntime, and a blue car pops out. The salesman\nopens the trunk, throws the machine in it,\nand says: \"I always wanted to start a fashion\ncoutoure business.\" Shuts the trunk, jumps in\n\"Later kiddo!\" - he waves as he drives off.\n\nYou look at the car and the large trail of\ndust behind it as it drives away toward the\nhorizon.\nBefore you can decide whether you're\ndisappointed or inspired, a portal opens\nup above you.\nThis one is a little different, you can\nsee through it a beautiful blue see, some\ntiny seaguls drifting in the sky. Their\nmovement gave the sea a new dimension, a\nsliding parallax that made the height and\ndepth more apparent. You jump up without\nhesitation, and as soon as you cross the\nportal your weight sheds.\n","\n"),string$Mnsplit("You fly further over a blue sea. It's very\nsunny, and the birdseye view is nice with\na certain warmth about it, not to mention\nthe sunny breeze on your face. You can see\na little port town sliding into the view.\nIt's very picteresque with pastel colors\nof cute houses playfully complimenting \nthe blue waters. You land and wander in \nthe port filled with quaint little boats,\nvibrant chatter, and a stray cat or two.\n\nYou approach a red cat and it makes\nthe lovliest of purrs. You pet her \naffectionally and her fur feels nice and \nsoft. She brushes against your leg, and runs\naway a little bit, turns her head back,\nobviously wanting for you to follow.\n\nAs you do, she dissapears around the corner\nof an alley. Once you arrive at the turn\nyou realize you may have lost track of her\nfor a little bit.\n\nShe reemerges from a carboard box looking\nat you from a distance and meaowing twice.\nAs you approach, you notice two tiny kittens\nsleeping and huddling in a nest put together\nfrom an old hat and some rags.\n\nShe starts breast-feeding them, and you\nwatch for a while, as the little ones are\nmaking 'cookie dough' with their paws.\nThe kittnes now fully fed, fall back calmly\ninto sleep.\n\nThe mature cat, on the other hand seems\nonly to have started as your tour guide.\nYou stroll into the dark end of the alley\nonly to see an opening with a path leading\ntoward a house nestled within the trees.\n\nThe cat runs in through an open door. You're\na little hesitant to go in at first, but the\npleasant cool draft coming from the shady\nabode lures you in.\n\nYou can see 'Red' - as you've now called \nher - mowing down on some food voraciously\nin the corner of the room. The room is \nfilled with flasks, old tomes, and \ncircuitous glass contraptions of some sorts.\nYou pan the room, and in the opposite corner,\nalmost barely visible, an old man is hidden\nbehind a rack of vials and a stack of books.\n\nHe mumbles something briefly, and rather\nangrily giving you only the shortest side-\n-glance of acknowledgement.\n\n\"I'm conducting an experiment. See this\nlittle stone?\" he points at a rough piece\nof grey rock. You nod.\n\"I've been trying for years now to\ntransform it into gold.\"\n\n\"Why doesn't it work?\"\n\n\"That's a good question! I thought I had\nall the steps worked out down to the tee.\"\n\nYou wander around curiously exploring the\nroom occasionally shyly standing on your\ntoes to better see what's on the shelves. \nYou see a flask of an unusual color, the\nalchemist interrupts your exploration.\n\n\"Not sure if that's the right color\"\nYou peer over your shoulder,\nonly to realize he's speaking to himself as \nhe studies the rock.\nAs you turn back you lose balance on the\nstool you've been standing on, and trying\nto grab the shelf for stability.\nYou pull the beautiful flask and it breaks\nwith its contents next to you on the floor.\n\"Oh, you careless child! Look what you did!\nAre you alright?\"\n\n\"Yes, I think so\" You reply rubbing your\nknee and looking for cuts. He helps you stand\nup, and notices a red gem right beside the\nbroken glass. He picks it up, takes out his\nmonocle, and observes the stone with an\nintense look.\n\n\"Ah, it's a memoir of a trip my parents\ntook me for when I was about your age.\nWe went to the beach and were collecting \nsea glass.\"\nHe pauses pensively\n\"This particular one, though, attracted\nme by the shape.\" Says, as if to himself.\nYou look at the red stone and it has a \ndistinct heart-shaped look. \n\n\"The stone?\"\n\n\"No, no. There was a girl there. She had\nbig blue eyes, jet-black hair, a spark\nof wit about her presence, and a cute\nlittle nose.\" He nods approvingly.\n\"She was with her parents too.\" He\ncontinues. \"Our families had lunch \ntogether later, and we built an anemometer\nfrom the debris found on the beach. It was\na lot of fun!\"\n\n\"What's an anemometer?\"\n\n\"It's a device for measuring wind strength.\nI took this red piece of seaglass we found,\nand formed it into this shape.\nA year later I met her again on that very\nsame beach, and gave it to her. She was \nvery surprised, but took it and smiled.\"\n\n\"What happened to her?\"\n\n\"I never saw her again on that beach.\" \nHe reminisces\n\"We met one more time - at the university.\"\nHe sighs.\n\"Unfortunately for me, she was already\nmarried.\"\n\n\"Sorry to hear that.\"\n\n\"She visited me a few months ago, gave\nme the flask - it was cat medicine she'd\nbeen researching. She thanked me for\ninspiring her to do research. The gem\nmust have been hidden inside the bottle,\nstrange. I never noticed it when I helped \nthis old wounded cat the other day.\"\nHe pauses. \"She must have kept it all \nthose years...\"\n\nA trace of a tear appears in the corner\nof his eye, and his face seems to have \ngained a child-like joy.\n\"A-ha!\" he exlaims.\n\"It must be about the shape!\"\n\nHe pockets the eyeglass and the stone,\ngoes back to his desk and starts shaping\nthe stone he left there. After a few \nminutes he arrives at a round shape, and \ndrops it into a funnel on one side of the\nmachine. After a series of clunks and\nhisses, a golden orb comes out on the \nother end.\n\"Here you go, my child\" he says as he\ngives it to you.\n","\n"),string$Mnsplit("You say goodbye and walk down the forest path\nenjoying the sun filtered by the gentle rustle\nof leaves.\n\n!image:images/obrazek.png\n\nThe path ends, and the animals swarm out and\nscatter. You're alone now, thirsty, but you get\nan eerie feeling like you're being observed.\nYou don't think you can make it back through\nthe path before sun goes down. You decide to\nfollow the animals to where you think they went\nto. They should at least know where water is,\nright?\n\nYou can smell smoke, that reminds you of the\ntime when you put marshmellow-filled biscuits\nin the oven and forgot - except more pleasant.\n\nYou follow, and eventually can see a lake, and\na bus parked near it. As you advance you\nrealize the bus has been long out of function.\nAt least its original one. It's painted in\ngreen, orange, and purple. You think that\nsomeone very creative must have painted it.\nThere are some bushes with berries on the \nsides of it, and trees with fruit growing on\nthem. You decide to take a gander inside the\nbus, as the door is wide open. There is old\nbut fanciful furniture inside with comfy pillows\nof different shapes and colors. Some plants\nare potted inside, which is a nice touch, and\nit feels like the bus was claimed by nature\nin a way. Nobody's home.\n\nYou turn toward the lake, and you see the same\nswarm of animals you think you saw before,\nracing toward a faint glow in the distance.\nYou come closer and can now see someone with\ntheir back turned to you, sitting in a little\nchair next to a campfire by the lake shore.\nThe animals seem to be flocking around, attracted\nnot only by the warmth, but an air of generosity\nof the person feeding them out of her hand. This\nmust be where the smoky smell of food is coming\nfrom. \n\nYou approach and are greeted by a bright smile\nof a lady with pink hair. One of her eyes is red,\nand the other is blue. \n\n\"I'm Jeannie. What's yourname little imp?\" \n\n\"I'm Pat\"\n\n\"Nice to meet you Pat. Come, sit down.\"\n\nYou sit down next to her and you have a snack\nand something to drink. Jeannie gives you a\nblanket to keep you warm, and you watch the\nsun set over the trees at the other end of\nthe lake.\n\n\"What do you do here, Jeannie?\" She takes a \nsip out of a bottle.\n\n\"I take care of the animals here, and they care\nfor me. I give them food, and shelter. I pick up\nthe trash people leave, and sometimes turn it\ninto furniture\"\nYou can see that a little table beside is made\nof different kinds of materials. You notice an\nexpression of sadness in Jeannie's face as she\ntends to the fire. You are impressed by the skill\nshe handles the fire though.\n\n\"How did you make this fire?\"\n\n\"I collected some dry grass, small sticks and firewood from the forest.\nI then used a mirror, to reflect the sunlight onto the dry grass.\"\n\n\"Why are you sad?\" She thinks for a minute\nwithout revealing any emotion, then a smile\ncomes back.\n\n\"There was this one guy... Let's call him\nJack of Clubs. He could always make me laugh,\nand he used to come here often. He had these\ngreat ideas and plans, but never finished any\nof them. Never left me a note or anything.\nThen there was this other one that I hoped\nwould hang out a little longer. He told me\neverything I needed to hear to feel loved\nand cared for. Maybe a little more than I\nshould have believed in. We did great things\ntogether. Then one day I turned and there was\na diamond on my pillow. No note either.\"\n\n\"Jack of Diamonds?\"\n\n\"Bingo\"\nYou hear a little rustle in the darkness, you\nturn toward it, but can't see anything\n\n\"What's your story?\"\n\n\"I was flying in the sky, and then I landed\non a desert with all those portals that led\ninto different time periods. There was a man\nwho had a great business idea... \nHe just didnt't know it at the time.\"\nJeannie giggles.\n\"Then I arrived at the port on this island here,\na cat led me to a home at the edge of the forest.\nA wise old man lived there. I came in, fell down,\nbroke a bottle, but I was okay. And it was okay.\nHe gave me a present.\"\n\n\"Is that so?\"\nYou nod, and take out the golden orb and put it\non the table with a little thud. You could swear\nyou could hear a rustle again, from the direction\nof nothing but pitch black.\n\"Okay, I think it's bed time for me, Pat\"\nYou feel tired too, and can't remember where\nyour bed was.\n\"There's a very comfortable seat for you to sleep\non in the bus.\" Says Jeannie.\n\nYou wake up, and see Jeannie fast asleep. You feel\nrestless though, and wish to continue your adventure.\nYou take a piece of paper out of a stack, and a pen\nand go back to the campfire. Where there was fire \nyesterday you can now see embers, and the forest\ncreatures are all gone. You gather some small sticks\nand cattail fluff for a while, and put it next to the\nfirepit. A brisk wind is coming from the lake. \nYou wrap yourself in a blanket, sit down, and write:\n\n\"Dear Jeannie,\n\nThank you - the seat was comfortable. We forgot\nto put out the fire, but at least you don't need\nsparks for the cattail fluff. I hope the animals\nreturn once you bring the fire back to life.\n\nYour friend, Pat\"\n\nYou put the letter under the orb, so that the wind\ndoesn't blow it away, and leave through a path you\nnever noticed yesterday.\n","\n"),string$Mnsplit("It's a beautiful morning, and the forest feels comforting again. The birds\nare signing, there's a parrot squawk, you can hear some unspecified mammal sounds,\nand the butterflies seem to have decided to accompany you for a while. \nA silhouette of something resembling a palace or a castle emerges through\nthe clearing in the distance.\n\nThe serenity is suddenly broken by the good old rustling behind you\n'That's it!' You think, angrily.\n\"Show yourself!\" You scream as you turn around toward the rascal with your\nteeth and fists clenched.\n\nThe rustling stops, and you were about to walk away, but it resumes, and\nyou can see a dark hooded figure stepping out of the brush. He seems mildly\nembarrassed.\n\n\"What do you want?!\"\n\nThe rogue approaches gingerly, scaling you up as his feet find his way\ndown the narrow path. He stops at a safe distance, you can now see his\nyoung and slightly concerned face. Than takes something out of his pocket\nand tosses it toward you on the path looking at you expectantly. It's the \norb you left at Jeannie's!\n\"You forgot something\" He says - to your surprise. You pick the orb up,\nand look back at the young man, curious. He smirks, and as he turns away\nhis cape flutters. You're puzzled. He glances through the shoulder and shouts\n\"By the way, Jeannie says thanks\"\n","\n"),string$Mnsplit("You venture forth deeper into the forest, enjoying the weather, the views\nand the air cooled off by the shade cast by the trees above you.\n\nFinally, you arrive at a bridge that leads to the palace courtyard.\nThere's a line of solidiers along the walkway to the palace enterance.\n\nTheir serious expressions make you hesitate for a moment, and you\ncan hear a growl in your stomache. You're hungry. As you look around\nyou notice a house with a \"Cuisine\" sign on top of the door. You're not\nsure what it means but you're hoping it has something to do with the\nsmell of food coming from that direction.\n\nYou come in, to a large room, a chef is immersed in a task, jumping around the pot,\nmumbling something. Disapproval. Taste. Approval. He has a tall white hat pleated at the top.\n\nHe turns around to you as you approach.\n\n\"Ah, you must be the new chef the partie.\" You're not sure, and you don't feel like\nhaving a party right now, but you accept the invitation.\n\"Yes\"\n\nHe browses a wardrobe for a moment, and says.\n\"Yes, zis one will be exquisite\"\nHe hands you over a hat, not a party hat - it' similar to his, except smaller.\nYou wear the hat.\n\"Today we'll be making crepes! Have you made crepes before?\"\n\"No\"\n\"Not to worry, I'll teach you. Come\"\nHe puts a recipie in front of you. As you read the ingriedient list,\nhe gathers the required items in front of you. As he shows\n\n\"Get a large bowl ready. Crack sree eggz into ze bowl.\"\nYou mimic the motions.\nAdd two ceups and two tablespoons of flour into ze bowl, \npour in a ceup of meelk and a ceup of water, add four tablepoons\nof oil and a pinch of salt.\nMeex for a few minutes until ze meexteure iz smooz\nMelt between a fifs or a quarter of butter on very low eet\nat ze sem time eet eup a non-steek pan to medium eet.\nLift ze 'ot pan and brush a leetehl melted butter onto it.\nDrip between ahf or two-serds of a ladle onto ze pan making\ncheur ze leequid distreeboots evenlee.\nPut ze pan back and wait for under a meenute until ze crepe\niz soleed and steam comes out from ze bottom of it\nLift ze pan and flip ze crepe in ze air to ze ozer side\nLay ze pan back on ze stove and cook for about ahf ze time\nyou cooked on ze ozer side until you can see some steam again,\nflip ze pan over a plate to remove ze ready crepe\"\n","\n"),string$Mnsplit("You march in through the large door that\nopened itself in front of you. On the \nthrone sits a beautiful lady. She seems\nto be enjoying the conversation with the\ncourtiers, but immediately turns your face\ntowards you as soon as you enter, and all\nthe lively chatter stops at once.\n\"You there!\" She says softly, and treats\nyou with the most kind of smiles you've ever\nseen. As if she were still a child deep down\nin her heart.\n\"It's very brave of you to have come here\nall by yourself\"\n\"It wasn't all that scary\" It kind of was,\nbut you are feeling encouraged.\n\"I've been waiting for you for a long time\"\n\"How so?\"\n\"Let's just say you've made an impact\nwithout even knowing it.\"\n\"This is a really pretty palace\"\nThe crowd seem to approve with cheerful\ngiggles here and there.\nThey offer you some of the most delicious \nfood you've ever eaten.\n\"A little bird told me you'll be coming.\"\nA little bird lands on her shoulder indeed.\nThat must be him.\n\"I have a gift for you\" The courtiers pass\na box from to another from the back of the\nhall, all the way to the dame. She opens the\nbox, and there's a pair of keys linked together\nin it. She gestures at you to come closer, and\nyou do with hesitation.\n\"You can come here whenever you want. All you \nhave to do is close your eyes and think of\nthis palace here.\"\n\"Thank you.\" You take the keys.\n\nYou strut out of the palace proudly, and as\nyou gather your thoughts before another take\noff, you decide to stroll into the garden.\nYou sit down for a bit, enjoying the weather,\nand finding comfort in the ambience of the\nlush surroundings. You are trying to make sense\nout of all of what happened today. Some time\npasses. A crow lands down on the side of the\nbench and asks.\n\"What's the matter, child?\" He has a distinct\nrolling 'r' as if trying to contain a tongue\nlonger than his disproportionally large beak.\n\"I just received keys to the palace, and I\ndon't know why\" you look at the floor tiles\nin front of you.\n\"Perhaps a little *reminder*, I shall bestow\nupon you, shan't I?\"\n\"What?\" you turn quickly toward the crow, but\nhe doesn't seem to have any intention of\nanswering. Instead, he starts turning his\nhead in circles in your general direction,\nas if casting a spell on you.\n*Poof*, you turn into a frog. Right at this\nsecond, a cook appears between you and the\npath back to the palace.\n\n\"Ah, mon petite grenouille, zere you are!\"\nexlaims the cook, and starts pacing toward\nyou with a cleaver raised.\n\"You may want to start rrrunning\". Suggests\nthe crow, and while you couldn't agree more,\nyou realize your legs are not particularly\nwell suited for the task at hand. That being\nsaid, you decide you'd still like to keep them. \nYou start hopping as fast as you can, but the\nmonster is unfailingly closing the gap behind\nyou. You leap into a hedge maze, as you try to\ncling onto your dear life.\n\n[maze puzzle - there is no exit out of it, just\na final destination? there's a bridge at the\nend of the maze that leads toward the courtyard.\nThe monster catches up on the bridge, as there\nare no turns anymore. perhaps slower on turns,\nso you could make up distance\n\nYou see Red jumping out of the bushes, meaowing\nat you with worry but happy that she can see you.\nShe's on the other side of the river. You think\nof anything that could help you defeat the beast,\nand you wished the game gave you more items to\ninteract with than just a set of keys and a golden\norb. In an act of desperation throw the golden orb\nin front of the chef. The monster has finally\ncaught on, and you know you're it. There's only\nthat little orb between you and him. As there's\nno protection anymore. You hope, remembering\nwhat the final words spoken to you at the castle\nwere, and close your eyes. You're scared out of\nyour mind as you wait for the inevitable. You\nsuddenly hear the monster roar, but not in anger -\n- it's fear! You hear a loud thud, and a thunderous\nimpact propagates through the ground, followed by\na loud meaow, and a splash of water. Somehow you\nfeel safe to open your eyes...\n","\n"),string$Mnsplit("You open your eyes slowly, and you realize\nyou're in bed. You were asleep!\nYou can smell a familiar fragrance.\nIt's unmistakenly blueberry muffins.\nYour head hurts.\n\nYou lift your gaze, blurry, still half-\n-trapped between sleep and waking, and you\ncan see your mom and dad. Your mom has\na colored shawl on her neck, with a sequence\nof small circles of various colors, all\njumbled up and embedded in it.\n\nThis place looks familiar. It's your bedroom!\n\nYour parents are very happy to see you you, as\nif they haven't seen you for ages. You try to\nspeak and it's so exerting that you raise in\nthe bed only slightly, but fall back to the\ncomfort of your bed with a tired moan.\n\"That's okay sweetie. It takes time to recover.\"\nSays your mom soothingly.\n\nYou see tears of joy in their eyes as they\nhuddle together. You notice a boy with red\nhair standing on the side of the bed.\n\"This is Red\" Your mom points at him.\n\"He found you and your bike next to the road.\"\nHe seems unmoved by the entire kerfuffle,\nenthusiastically juggling a small golden\nfootball. He stops as your gazes meet, puts\nthe ball under his arm, and brings a plate\nof muffins over to you.\n\"Here, my mom made these.\"\n","\n"));
+
+var chapters = list(string$Mnsplit("Pat Panackelty\n\nAs you descend from hypnagogia\ninto blissful slumber - a more\nchiselled and defined version of the\ndream-like world appears in front of\nyou. One that is, so to speak, more\nreal, and more true to the inherent\nquality of fantasy worlds: limited\nonly by the boundaries of imagination.\n!jeannie\n\nAt first, you fly high in the sky,\nonly occasionally seeing the cloudy\ncurtain reveal worlds of intriguing\nbeauty, resplendent colours,\nfantastical beings and nature with\nmonumental wonders of oddly-shaped\narchitecture.\n\nYou let them come and go as easily\nas they appear, but only after you've\nbreathed their essence, and the\nsequence of their appearance seems\nto make sense to you on some level,\neven though they are so much\ndifferent from one another, and it\nfeels like it's not really you\nwho controls what and when is being\nrevealed.\n\nYou bathe in the pleasant visions\nfor what feels like eons almost\ndissolving in the end. Who are you?\nYou forgot!\n\nPat Panackelty\n","\n"),string$Mnsplit("You descend onto a desert, and thump\ngently onto the ground. A few moments\npass, and only a tumbleweed clutters\nthe never-ending vastness of the\nlandscape. You are starting to get\na little bored when suddenly - what\nappears to be a portal - expands\nvertically. Once it's about human size\na man jumps out of it holding a sewing\nmachine under his arm.\n\nA sewing machine is a device for\nlinkingpieces of fabric together. \nBut you already knew that, right?\n\nHe brushes off some dust of hisbeautiful,\nbut a little flashy suit, then looks\ndown at his watch, and before you can\nutter a word, jumps quickly into another\nportal appearing right in from of him.\n\nYou feel mildly disappointed. However,\nnot a second has passed when a portal\nbehind you opened up, you turn around\nand see the very same man, this time\ndropping his machine as he falls on his\nhands and knees. You notice an arrow\npierced through his fleece, he appears\nunharmed though. He stands up vigorously\ndusting the suit off, visibly angry.                                              \n\n\"Hello\" - you say                                                                     \nHe turns his eyes up towards you briefly,\nthen continues to groom himself.\n\n\"Hello!\" - you say a little louder\n\n\"I'm quite busy here...\"\n\n\"What are you doing?\" \n\n\"See these?\" He points at one of the \nportals that constantly reappear in\nvarious places at random intervals.\n\"These are portals to other worlds\"\n\n\"You mean fantasy worlds?\"\n\n\"No, no\" seems to have calmed down now\nthat he's grabbed your attention.\" These\nhead to different time periods of this\nplanet\"\n\n\"And what is this?\" you pretend you didn't\nknow.      \n\n\"Oh, it's a sewing machine. I've been\ntrying to sell it\"\n\nHe turns his glance toward the the arrow\nangrily, but not as much as last time,\nand removes it.\n\n\"It hasn't been going very well, has it?\"\nyou pause. \"You do this everyday?\"\n\n\"Yeah that's what I do\"\n\n\"I must say, it's very impressive\"\n\n\"Oh yeah?\"\n\n\"What happened?\"\n\n\"I was trying to get a few trinkets for\nit from a brute who tried to apply it\non leather. I tried to tell him to stop,\nbut he was a little overenthusiastic\nto try it out.\"\n\n\"Good thing you're OK\"\n\nThe salesman straigthens out, and had a\nslight expression of worry on his face,\nbut very quickly smiled.\n\n\"I was in the wrong time period\"\n\nA portal opens up, horizontally this \ntime, and a blue car pops out. The\nsalesman opens the trunk, throws the\nmachine in it, and says: \"I always wanted\nto start a fashion coutoure business.\"\nShuts the trunk, jumps in \"Later kiddo!\" \nhe waves as he drives off.\n\nYou look at the car and the large trail\nof dust behind it as it drives away\ntoward the horizon.\nBefore you can decide whether you're\ndisappointed or inspired, a portal\nopens up above you.\nThis one is a little different, you can\nsee through it a beautiful blue sea,\nsome tiny seaguls drifting in the sky.\nTheir movement gave the sea a new\ndimension, a sliding parallax that made\nthe height and depth more apparent. You\njump up without hesitation, and as soon\nas you cross the portal your weight sheds.\n","\n"),string$Mnsplit("You fly further over a blue sea. It's\nvery sunny, and the birdseye view is\nnice with a certain warmth about it,\nnot to mention the sunny breeze on your\nface. You can see a little port town\nsliding into the view. It's very\npicturesque with pastel colours of cute\nhouses playfully complimenting the blue\nwaters. You land and wander in the port\nfilled with quaint little boats,\nvibrant chatter, and a stray cat or two.\n\nYou approach a red cat and it makes\nthe lovliest of purrs. You pet her \naffectionally and her fur feels nice\nand  soft. She brushes against your leg,\nand runs away a little bit, turns her\nhead back, obviously wanting for you to\nfollow.\n\nAs you do, she dissapears around the\ncorner of an alley. Once you arrive at\nthe turn you realize you may have lost\ntrack of her for a little bit.\n\nShe reemerges from a carboard box looking\nat you from a distance and meaowing twice.\nAs you approach, you notice two tiny\nkittens sleeping and huddling in a nest\nput together from an old hat and some rags.\n\nShe starts breast-feeding them, and you\nwatch for a while, as the little ones\nare making 'cookie dough' with their\npaws. The kittnes now fully fed, fall\nback calmly into sleep.\n\nThe mature cat, on the other hand seems\nonly to have started as your tour guide.\nYou stroll into the dark end of the\nalley only to see an opening with a path\nleading toward a house nestled within\nthe trees.\n\nThe cat runs in through an open door.\nYou're a little hesitant to go in at\nfirst, but the pleasant cool draft\ncoming from the shady abode lures you in.\n\nYou can see 'Red' - as you've now\ncalled  her - mowing down on some food\nvoraciously in the corner of the room.\nThe room is  filled with flasks, old\ntomes, and  circuitous glass contraptions\nof some sorts. You pan the room, and in\nthe opposite corner, almost barely\nvisible, an old man is hidden behind a\nrack of vials and a stack of books.\n\nHe mumbles something briefly, and rather\nangrily giving you only the shortest\nside-glance of acknowledgement.\n\n\"I'm conducting an experiment. See this\nlittle stone?\" he points at a rough\npiece of grey rock. You nod.\n\"I've been trying for years now to\ntransform it into gold.\"\n\n\"Why doesn't it work?\"\n\n\"That's a good question! I thought I\nhad all the steps worked out down to\nthe tee.\"\n\nYou wander around curiously exploring\nthe room occasionally shyly standing on\nyour toes to better see what's on the\nshelves.  You see a flask of an unusual\ncolour, the alchemist interrupts your\nexploration.\n\n\"Not sure if that's the right colour\"\nYou peer over your shoulder,\nonly to realize he's speaking to himself\nas he studies the rock.\nAs you turn back you lose balance on\nthe stool you've been standing on, and\ntrying to grab the shelf for stability.\nYou pull the beautiful flask and it\nbreaks with its contents next to you\non the floor.\n\"Oh, you careless child! Look what you\ndid! Are you alright?\"\n\n\"Yes, I think so\" You reply rubbing your\nknee and looking for cuts. He helps you\nstand up, and notices a red gem right\nbeside the broken glass. He picks it up,\ntakes out his monocle, and observes the\nstone with an intense look.\n\n\"Ah, it's a memoir of a trip my parents\ntook me for when I was about your age.\nWe went to the beach and were collecting \nsea glass.\"\nHe pauses pensively\n\"This particular one, though, attracted\nme by the shape.\" Says, as if to himself.\nYou look at the red stone and it has a \ndistinct heart-shaped look. \n\n\"The stone?\"\n\n\"No, no. There was a girl there. She\nhad big blue eyes, jet-black hair, a\nspark of wit about her presence, and a\ncute little nose.\" He nods approvingly.\n\"She was with her parents too.\" He\ncontinues. \"Our families had lunch \ntogether later, and we built an anemometer\nfrom the debris found on the beach. It\nwas a lot of fun!\"\n\n\"What's an anemometer?\"\n\n\"It's a device for measuring wind strength.\nI took this red piece of sea glass we\nfound, and formed it into this shape.\nA year later I met her again on that\nvery same beach, and gave it to her.\nShe was  very surprised, but took it\nand smiled.\"\n\n\"What happened to her?\"\n\n\"I never saw her again on that beach. \nWe met one more time - at the university.\"\nHe sighs.\n\"Unfortunately for me, she was already\nmarried.\"\n\n\"Sorry to hear that.\"\n\n\"She visited me a few months ago, gave\nme the flask - it was cat medicine she'd\nbeen researching. She thanked me for\ninspiring her to do research. The gem\nmust have been hidden inside the bottle,\nstrange. I never noticed it when I helped \nthis old wounded cat the other day.\"\nHe pauses. \"She must have kept it all \nthose years...\"\n\nA trace of a tear appears in the corner\nof his eye, and his face seems to have \ngained a child-like joy.\n\"A-ha!\" he exlaims.\n\"It must be about the shape!\"\n\nHe pockets the eyeglass and the stone,\ngoes back to his desk and starts shaping\nthe stone he left there. After a few \nminutes he arrives at a round shape,\nand  drops it into a funnel on one side\nof the machine. After a series of clunks\nand hisses, a golden orb comes out on\nthe  other end.\n\"Here you go, my child\" he says as he\ngives it to you.\n","\n"),string$Mnsplit("You say goodbye and walk down the forest\npath enjoying the sun filtered by the\ngentle rustle of leaves.\n\nThe path ends, and the animals swarm\nout and scatter. You're alone now, thirsty,\nbut you get an eerie feeling like you're\nbeing observed. You don't think you can\nmake it back through the path before\nsun goes down. You decide to follow the\nanimals to where you think they went to.\nThey should at least know where water is,\nright?\n\nYou can smell smoke, that reminds you\nof the time when you put marshmallow-\n-filled biscuits in the oven and forgot -\n- except more pleasant.\n\nYou follow, and eventually can see a\nlake, and a bus parked near it.\nYou approach.\n\n!image:images/obrazek.png\n\nAs you advance you\nrealize the bus has been long out of\nfunction. At least its original one.\nIt's painted in green, orange, and\npurple. You think that someone very\ncreative must have painted it. There\nare some bushes with berries on the \nsides of it, and trees with fruit growing\non them. You decide to take a gander\ninside the bus, as the door is wide\nopen. There is old but fanciful furniture\ninside with comfy pillows of different\nshapes and colours. Some plants are\npotted inside, which is a nice touch,\nand it feels like the bus was claimed\nby nature in a way. Nobody's home.\n\nYou turn toward the lake, and you see\nthe same swarm of animals you think you\nsaw before, racing toward a faint glow\nin the distance. You come closer and can\nnow see someone with their back turned\nto you, sitting in a little chair next\nto a campfire by the lake shore. The\nanimals seem to be flocking around,\nattracted not only by the warmth, but\nan air of generosity of the person\nfeeding them out of her hand. This must\nbe where the smoky smell of food is\ncoming from. \n\nYou approach and are greeted by a bright\nsmile of a lady with pink hair. One of\nher eyes is red, and the other is blue. \n\n\"I'm Jeannie. What's your name little imp?\" \n\n\"I'm Pat\"\n\n\"Nice to meet you Pat. Come, sit down.\"\n\nYou sit down next to her and you have\na snack and something to drink. Jeannie\ngives you a blanket to keep you warm,\nand you watch the sun set over the trees\nat the other end of the lake.\n\n\"What do you do here, Jeannie?\" She\ntakes a  sip out of a bottle.\n\n\"I take care of the animals here, and\nthey care for me. I give them food, and\nshelter. I pick up the trash people\nleave, and sometimes turn it into\nfurniture\"\nYou can see that a little table beside\nis made of different kinds of materials.\nYou notice an expression of sadness in\nJeannie's face as she tends to the fire.\nYou are impressed by the skill she handles\nthe fire though.\n\n\"How did you make this fire?\"\n\n\"I collected some dry grass, small\nsticks and firewood from the forest.\nI then used a mirror, to reflect the\nsunlight onto the dry grass.\"\n\n\"Why are you sad?\" She thinks for a\nminute without revealing any emotion,\nthen a smile comes back.\n\n\"There was this one guy... Let's call\nhim Jack of Clubs. He could always make\nme laugh, and he used to come here often.\nHe had these great ideas and plans, but\nnever finished any of them. Never left\nme a note or anything. Then there was\nthis other one that I hoped would hang\nout a little longer. He told me everything\nI needed to hear to feel loved and cared\nfor. Maybe a little more than I should\nhave believed in. We did great things\ntogether. Then one day I turned and\nthere was a diamond on my pillow. No\nnote either.\"\n\n\"Jack of Diamonds?\"\n\n\"Bingo\"\nYou hear a little rustle in the darkness,\nyou turn toward it, but can't see anything\n\n\"What's your story?\"\n\n\"I was flying in the sky, and then I\nlanded on a desert with all those portals\nthat led into different time periods.\nThere was a man who had a great business\nidea... \nHe just didnt't know it at the time.\"\nJeannie giggles.\n\"Then I arrived at the port on this\nisland here, a cat led me to a home at\nthe edge of the forest. A wise old man\nlived there. I came in, fell down,\nbroke a bottle, but I was okay. And it\nwas okay. He gave me a present.\"\n\n\"Is that so?\"\nYou nod, and take out the golden orb\nand put it on the table with a little\nthud. You could swear you could hear a\nrustle again, from the direction\nof nothing but pitch black.\n\"Okay, I think it's bed time for me, Pat\"\nYou feel tired too, and can't remember\nwhere your bed was.\n\"There's a very comfortable seat for\nyou to sleep on in the bus.\" Says Jeannie.\n\nYou wake up, and see Jeannie fast asleep.\nYou feel restless though, and wish to\ncontinue your adventure. You take a piece\nof paper out of a stack, and a pen and\ngo back to the campfire. Where there was\nfire  yesterday you can now see embers,\nand the forest creatures are all gone.\nYou gather some small sticks and cattail\nfluff for a while, and put it next to\nthe firepit. A brisk wind is coming from\nthe lake.  You wrap yourself in a blanket,\nsit down, and write:\n\n\"Dear Jeannie,\n\nThank you - the seat was comfortable.\nWe forgot to put out the fire, but at\nleast you don't need sparks for the\ncattail fluff. I hope the animals return\nonce you bring the fire back to life.\n\nYour friend, Pat\"\n\nYou put the letter under the orb, so\nthat the wind doesn't blow it away,\nand leave through a path you never\nnoticed yesterday.\n","\n"),string$Mnsplit("It's a beautiful morning, and the forest\nfeels comforting again. The birds are\nsigning, there's a parrot squawk, you can\nhear some unspecified mammal sounds, and\nthe butterflies seem to have decided to\naccompany you for a while.  A silhouette\nof something resembling a palace or a\ncastle emerges through the clearing in\nthe distance.\n\nThe serenity is suddenly broken by the\ngood old rustling behind you\n'That's it!' You think, angrily.\n\"Show yourself!\" You scream as you turn\naround toward the rascal with your teeth\nand fists clenched.\n\nThe rustling stops, and you were about\nto walk away, but it resumes, and you\ncan see a dark hooded figure stepping\nout of the brush. He seems mildly\nembarrassed.\n\n\"What do you want?!\"\n\nThe rogue approaches gingerly, scaling\nyou up as his feet find his way down the\nnarrow path. He stops at a safe distance,\nyou can now see his young and slightly\nconcerned face. Than takes something out\nof his pocket and tosses it toward you\non the path looking at you expectantly.\nIt's the  orb you left at Jeannie's!\n\"You forgot something\" He says - to your\nsurprise. You pick the orb up, and look\nback at the young man, curious. He smirks,\nand as he turns away his cape flutters.\nYou're puzzled. He glances through the\nshoulder and shouts\n\"By the way, Jeannie says thanks\"\n","\n"),string$Mnsplit("You venture forth deeper into the forest,\nenjoying the weather, the views and the\nair cooled off by the shade cast by the\ntrees above you.\n\nFinally, you arrive at a bridge that\nleads to the palace courtyard. There's\na line of solidiers along the walkway\nto the palace enterance.\n\nTheir serious expressions make you\nhesitate for a moment, and you can hear\na growl in your stomache. You're hungry.\nAs you look around you notice a house\nwith a \"Cuisine\" sign on top of the door.\nYou're not sure what it means but you're\nhoping it has something to do with the\nsmell of food coming from that direction.\n\nYou come in, to a large room, a chef is\nimmersed in a task, jumping around the pot,\nmumbling something. Disapproval. Pinch\nof salt. Taste. Approval. He has a tall\nwhite hat pleated at the top.\n\nHe turns around to you as you approach.\nHe's a rotund man with a thin and long\npointy mustache. He extends his arm with\nhis eyes closed and a cheerful smile.\nYou shake his hand.\n\n\"Ah, you must be the new chef the partie.\"\nYou're not sure, and you don't feel\nlike having a party right now, but you\naccept the invitation.\n\n\"Yes\" He browses a wardrobe for a moment,\nand says:\n\"Yes, zis one will be exquisite\"\nHe hands you over a hat, not a party\nhat - it' similar to his, except smaller.\nYou wear the hat.\n\"Today we'll be making crepes! Have you\nmade crepes before?\"\n\n\"No\"\n\n\"Not to worry, I'll teach you. Come\"\nHe puts a recipie in front of you. As\nyou read the ingriedient list, he gathers\nthe required items in front of you.\n\"Get a large bowl ready.\" He puts a bowl\nin front of you and one in front of him.\n\"Crack sree eggz into ze bowl. Add two\nceups and two tablespoons of flour into\nze bowl, pour in a ceup of meelk and a\nceup of water, add four tablepoons of\noil and a pinch of salt.\" You're asked\nto measure the correct amounts. Luckily,\nyou are given a tablespoon, a cup,\nand your fingers can do the pinching.\n\"Meex for a few minutes until ze meexteure\niz smooz\" He gives you a wooden spoon.\n\"Melt between a fifs or a quarter of\nbutter on very low eet at ze sem time\neet eup a non-steek pan to medium eet.\"\nYou can see the pans already on the\nstove. He helps you set the heatcorrectly.\n\"Lift ze 'ot pan and brush a leetehl\nmelted butter onto it.\"\n\n\"Drip between ahf or two-serds of a\nladle onto ze pan making cheur ze\nleequid distreeboots evenlee.\"\n\n\"Don't put too little or too much.\nJust ze right amount. So when cooked\non ze under side, it doesn't splash ze\nuncooked dough as you flip it over.\"\nHe pours the dough onto the pan tilting\nit to make sure the surface is covered.\n\n\"Put ze pan back and wait for under a\nmeenute until ze crepe iz soleed and\nsteam comes out from ze bottom of it\"\nAfter about a minute, he lifts the pan,\nand shakes it horizontally, and you can\nsee the pancake slide back an forth.\n\n\"Pick eup ze pan and flip ze crepe in\nze air to ze ozer side. Like zis\" He\ntosses the pancake into the air, and\nlands it perfectly as if was a piece\nof cake. Got it? You did, and...\n\nNow's the time! The pancake flips, with\nlittle force applied.\n*Pat* It lands half-folded on the pan.\n\n\"Don't worry. Next time try to cook it\na few seconds longer\" You throw zis...\nekhm, this one away not at all discouraged\nQuite the opposite! You close your eyes,\nand swing the pan full blast. *Splat!*\nYou hear. You look up to see the crepe\nstuck to the ceiling. Not for long, as\nit falls right onto his face.\n\n\"Tout ce qui monte doit redescendre...\"\nHe mumbles in French.\n\"What goes up must come down\"\n\nYou tilt your head forward with an\nintense squint of concentration, and\ntry again. *Zing!* It lands perfectly.\nYou curtsy with your pan still in your\nhand.\n\n\"Bravo!\" he claps with a smug expression\n\"Lay ze pan back on ze stove and cook\nfor about ahf ze time you cooked on ze\nozer side until you can see some steam\nagain, flip ze pan over a plate to remove\nze ready crepe\". You finish the rest of\nthe crepes with more ease.\n\n\"Go through zis door to discuss your\ncompensation\" He points at a door in\nthe other side of the kitchen. You go\nthrough, and follow a path that leads\nto the palace through an olive grove.\n","\n"),string$Mnsplit("You march in through the large door\nthat opened itself in front of you.\nOn the  throne sits a beautiful lady.\nShe seems to be enjoying the conversation\nwith the courtiers, but immediately\nturns your face towards you as soon as\nyou enter, and all the lively chatter\nstops at once. \"You there!\" She says\nsoftly, and treats you with the most\nkind of smiles you've ever seen. As if\nshe were still a child deep down in her\nheart.\n\n\"It's very brave of you to have come\nhere all by yourself\"\n\n\"It wasn't all that scary\" It kind of\nwas, but you are feeling encouraged.\n\n\"I've been waiting for you for a long\ntime\"\n\n\"How so?\"\n\n\"Let's just say you've made an impact\nwithout even knowing it.\"\n\n\"This is a really pretty palace\"\nThe crowd seem to approve with cheerful\ngiggles here and there. They offer you\nsome of the most delicious food you've\never eaten.\n\n\"A little bird told me you'll be coming.\"\nA little bird lands on her shoulder indeed.\nThat must be him.\n\"I have a gift for you\" The courtiers\npassa box from to another from the back\nof the hall, all the way to the dame.\nShe opens the box, and there's a pair\nof keys linked together in it. She\ngestures at you to come closer, and you\ndo with hesitation. \"You can come here\nwhenever you want. All you have to do\nis close your eyes and think of this\npalace here.\"\n\n\"Thank you.\" You take the keys.\n\nYou strut out of the palace proudly,\nand as you gather your thoughts before\nanother take off, you decide to stroll\ninto the garden. You sit down for a bit,\nenjoying the weather, and finding\ncomfort in the ambience of the lush\nsurroundings. You are trying to make\nsense out of all of what happened today.\nSome time passes. A crow lands down on\nthe side of the bench and asks.\n\n\"What's the matter, child?\" He has a\ndistinct rolling 'r' as if trying to\ncontain a tongue longer than his\ndisproportionally large beak.\n\n\"I just received keys to the palace,\nand I don't know why\" you look at the\nfloor tiles in front of you.\n\n\"Perhaps a little *reminder*, I shall\nbestow upon you, shan't I?\"\n\n\"What?\" you turn quickly toward the\ncrow, but he doesn't seem to have any\nintention of answering. Instead, he\nstarts turning his head in circles in\nyour general direction, as if casting\na spell on you. *Poof*, you turn into\na frog. Right at this second, a cook\nappears between you and the path back\nto the palace.\n\n\"Ah, mon petite grenouille, zere you are!\"\nexlaims the cook, and starts pacing\ntoward you with a cleaver raised.\n\n\"You may want to start rrrunning\".\nSuggests the crow, and while you couldn't\nagree more, you realize your legs are\nnot particularly well suited for the\ntask. That being said, you decide you'd\nstill like to keep them.  You start\nhopping as fast as you can, but he who\nwas once an affable teacher, and whom\nyou know perceive as a savage monster,\nis unfailingly closing the gap behind\nyou. You leap into a hedge maze, as you\ntry to cling onto your dear life.\n\nYou see Red jumping out of the bushes,\nmeaowing at you with worry but happy\nthat she can see you. She's on the\nother side of the river. You think of\nanything that could help you defeat\nyour predator, and you wished the game\ngave you more items to interact with\nthan just a set of keys and a golden\norb. In an act of desperation you throw\nthe golden orb in front of the chef,\nthe monster has finally caught on, and\nyou know you're it. There's only that\nlittle orb between you and him. As\nthere's no protection anymore. You hope,\nremembering what the final words spoken\nto you at the castle were, and close\nyour eyes. You're scared out of your\nmind as you wait for the inevitable.\nYou suddenly hear the beast roar, but\nnot in anger - it's fear! You hear a\nloud thud, and a thunderous impact\npropagates through the ground, followed\nby a loud meaow, and a splash of water\nSomehow you feel safe to open your eyes...\n","\n"),string$Mnsplit("You open your eyes slowly, and you\nrealize you're in bed. You were asleep!\nYou can smell a familiar fragrance.\nIt's unmistakenly blueberry muffins.\nYour head hurts.\n\nYou lift your gaze, blurry, still half-\n-trapped between sleep and waking, and\nyou can see your mom and dad. Your mom\nhas a colored shawl on her neck, with a\nsequence of small circles of various\ncolors, all jumbled up and embedded in it.\n\nThis place looks familiar. It's your\nbedroom!\n\nYour parents are very happy to see you,\nas if they haven't seen you for ages.\nYou try to speak and it's so exerting\nthat you raise in the bed only slightly\nbut fall back to the comfort of your bed\nwith a tired moan. \"That's okay sweetie\nIt takes time to recover.\" Says your mom\nsoothingly.\n\n\"My job is done here. She needs plenty\nof rest, and she'll be good as new in a\nmatter of days!\" Said a man in a suit\nwith a large leather bag, and a\nstethoscope. As he's packing his things,\nyou notice a boy with red hair juggling\na small golden football farther into the\nroom.\n\n\"This is Red\" Your mom points at him.\n\"He found you and your bike next to the\nroad.\"\nHe seems unmoved by the entire kerfuffle,\nenthusiastically juggling a small golden\nfootball. He stops as your gazes meet,\nputs the ball under his arm, and brings\na plate of muffins over to you.\n\"Here, my mom made these.\" he smiles.\n","\n"));
+
 
 var images = {};
 for (var chapter of chapters) {
@@ -496,23 +512,305 @@ for (var chapter of chapters) {
 }
 let image = (path) => images[path] || false;
 
-;
+var interactions = {};
+
+
 var vertical$Mnscroll = 0;
+
 var content$Mnheight = 0;
+
 var line$Mnheight = 48;
+
 var top$Mnmargin = 48;
+
 var left$Mnmargin = 100;
+
 var current$Mnchapter = 0;
+
 var nextarrow$Mnleft = 0;
+
 var nextarrow$Mntop = 0;
+
 var nextarrow$Mnwidth = 0;
+
 var nextarrow$Mnheight = 0;
+
 var backarrow$Mnleft = 0;
+
 var backarrow$Mntop = 0;
+
 var backarrow$Mnwidth = 0;
+
 var backarrow$Mnheight = 0;
-var render = (()=>{return ((canvas)=>{return ((ctx)=>{return (()=>{canvas.width=$Mn(window.innerWidth,20);canvas.height=$Mn(window.innerHeight,20);ctx.font="26px californian";return ((base)=>{(($Gt(current$Mnchapter,0))===false?undefined:((()=>{ctx.fillText("🠜",left$Mnmargin,$Mn(base,vertical$Mnscroll));backarrow$Mnleft=$Mn(left$Mnmargin,10);backarrow$Mntop=$Mn(base,vertical$Mnscroll,10);((arrow)=>{backarrow$Mnwidth=$Pl(arrow.width,20);return backarrow$Mnheight=$Pl(arrow.emHeightAscent,20);})(ctx.measureText("🠜"));return base=$Pl(base,line$Mnheight);})()));for$Mneach(((line)=>{return ((string$Eq$Qu(string$Mntake(line,string$Mnlength("!image:")),"!image:"))===false?((()=>{ctx.fillText(line,left$Mnmargin,$Mn(base,vertical$Mnscroll));return base=$Pl(base,line$Mnheight);})()):(((path)=>{return ((img)=>{return (()=>{ctx.drawImage(img,left$Mnmargin,$Mn(base,vertical$Mnscroll));return base=$Pl(base,img.height,line$Mnheight);})();})(image(path));})(string$Mndrop(line,string$Mnlength("!image:")))));}),list$Mnref(chapters,current$Mnchapter));(($Ls(current$Mnchapter,$Mn(length(chapters),1)))===false?undefined:((()=>{ctx.fillText("🠞",$St(4,left$Mnmargin),$Mn(base,vertical$Mnscroll));nextarrow$Mnleft=$Mn($St(4,left$Mnmargin),10);nextarrow$Mntop=$Mn(base,vertical$Mnscroll,10);((arrow)=>{nextarrow$Mnwidth=$Pl(arrow.width,20);return nextarrow$Mnheight=$Pl(arrow.emHeightAscent,20);})(ctx.measureText("🠞"));return base=$Pl(base,line$Mnheight);})()));return content$Mnheight=$Pl(base,line$Mnheight,top$Mnmargin);})(top$Mnmargin);})();})(canvas.getContext("2d"));})(document.getElementById("canvas"));});
-window.addEventListener("resize",render);
-window.addEventListener("load",render);
-window.addEventListener("click",((event)=>{return (((($Ls$Eq(nextarrow$Mnleft,event.x,$Pl(nextarrow$Mnleft,nextarrow$Mnwidth)))===false?(false):((($Ls$Eq(nextarrow$Mntop,event.y,$Pl(nextarrow$Mntop,nextarrow$Mnheight)))===false?(false):($Ls($Pl(current$Mnchapter,1),length(chapters)))))))===false?((((($Ls$Eq(backarrow$Mnleft,event.x,$Pl(backarrow$Mnleft,backarrow$Mnwidth)))===false?(false):((($Ls$Eq(backarrow$Mntop,event.y,$Pl(backarrow$Mntop,backarrow$Mnheight)))===false?(false):($Gt$Eq($Mn(current$Mnchapter,1),0))))))===false?undefined:((()=>{current$Mnchapter=$Mn(current$Mnchapter,1);vertical$Mnscroll=0;return render();})()))):((()=>{current$Mnchapter=$Pl(current$Mnchapter,1);vertical$Mnscroll=0;return render();})()));}));
-document.addEventListener("wheel",((event)=>{vertical$Mnscroll=max($Mn(top$Mnmargin),min($Mn(content$Mnheight,window.innerHeight),$Mn(vertical$Mnscroll,event.wheelDeltaY)));return render();}));
+
+var current$Mninteraction = false;
+
+class Maze {
+constructor(blocks, player, background, width, height, leftMargin, topMargin) {
+  this.rows = blocks.length;
+  this.cols = blocks[0].length;
+  this.map = blocks;
+  this.player = player;
+  this.background = background;
+  this.width = width;
+  this.height = height;
+  this.leftMargin = leftMargin;
+  this.topMargin = topMargin;
+  this.rotation = 0;
+
+  for (var row = 0; row < this.rows; ++row) {
+    for (var col = 0; col < this.cols; ++col) {
+      if (blocks[row][col] == '@') {
+        this.left = col;
+        this.top = row;
+      }
+      if (blocks[row][col] == 'O') {
+        this.targetLeft = col;
+        this.targetTop = row;
+        blocks[row][col] = ' ';
+      }
+    }
+  }
+}
+
+finished() {
+  return this.left == this.targetLeft && this.top == this.targetTop;
+}
+
+render(ctx, left, top) {
+  ctx.drawImage(this.background, left, top);
+
+  var x = left + this.leftMargin + this.left * this.player.width 
+     + this.player.width/2;
+
+  var y = top + this.topMargin + this.top * this.player.height
+     + this.player.height/2;
+
+  if (this.finished()) {
+    return;
+  }
+
+  ctx.save();
+
+  ctx.translate(x, y);
+
+  ctx.rotate(this.rotation);
+  ctx.drawImage(this.player, -this.player.width/2, -this.player.height/2);
+
+  ctx.restore();
+
+  var fog = ctx.createRadialGradient(x,y,this.player.width, x,y,2*this.player.width);
+  fog.addColorStop(0, 'rgba(255,255,255,0.0)');
+  fog.addColorStop(1, 'rgba(0,0,0,0.9)');
+
+  var origFillStyle = ctx.fillStyle;
+  ctx.fillStyle = fog;
+  ctx.fillRect(left, top, this.background.width, this.background.height);
+  ctx.fillStyle = origFillStyle;
+}
+
+keyPress(key) {
+  switch(key) {
+    case 'ArrowUp':
+      if (this.top > 0 && this.map[this.top-1][this.left] == ' ') {
+        this.map[this.top][this.left] = ' ';
+        this.top -= 1;
+        this.map[this.top][this.left] = '@';
+      }
+      this.rotation = 0;
+      break;
+    case 'ArrowDown':
+      if (this.top < this.rows-1 && this.map[this.top+1][this.left] == ' ') {
+        this.map[this.top][this.left] = ' ';
+        this.top += 1;
+        this.map[this.top][this.left] = '@';
+      }
+      this.rotation = Math.PI;
+      break;
+    case 'ArrowLeft':
+      if (this.left > 0 && this.map[this.top][this.left-1] == ' ') {
+        this.map[this.top][this.left] = ' ';
+        this.left -= 1;
+        this.map[this.top][this.left] = '@';
+      }
+      this.rotation = -Math.PI/2;
+      break;
+    case 'ArrowRight':
+      if (this.left < this.cols-1 && this.map[this.top][this.left+1] == ' ') {
+        this.map[this.top][this.left] = ' ';
+        this.left += 1;
+        this.map[this.top][this.left] = '@';
+      }
+      this.rotation = Math.PI/2;
+      break;
+    default:
+      console.log('maze pressed '+key);
+  }
+}
+
+keyRelease(key) {}
+
+}
+
+
+var _ = " ";
+
+var X = "#";
+
+var V = "@";
+
+var O = "O";
+
+var dont$Mnrepeat = false;
+
+
+var board = new Image();
+board.src = 'images/board.png';
+
+var pat = new Image();
+pat.src = 'images/pat.png';
+
+
+slot$Mnset$Ex(interactions,{symbol: "jeannie"},new Maze([
+  [_,_,_,X,X,X,O],
+  [_,X,_,_,_,X,_],
+  [_,_,X,X,_,_,_],
+  [X,_,_,_,X,X,X],
+  [_,_,V,_,X,X,_],
+], pat, board, 480, 340, 9, 12))
+var render = (()=>{
+return ((canvas)=>{
+return ((ctx)=>{
+return (()=>{
+canvas.width=$Mn(window.innerWidth,20);
+;
+canvas.height=$Mn(window.innerHeight,20);
+;
+ctx.font="26px californian";
+;
+current$Mninteraction=false;
+;
+return ((base,break$Qu)=>{
+(($Gt(current$Mnchapter,0))===false?undefined:((()=>{
+ctx.fillText("🠜",left$Mnmargin,$Mn(base,vertical$Mnscroll));
+backarrow$Mnleft=$Mn(left$Mnmargin,10);
+;
+backarrow$Mntop=$Mn(base,vertical$Mnscroll,10);
+;
+((arrow)=>{
+backarrow$Mnwidth=$Pl(arrow.width,20);
+;
+return backarrow$Mnheight=$Pl(arrow.emHeightAscent,20);
+;
+})(ctx.measureText("🠜"));
+return base=$Pl(base,line$Mnheight);
+;
+})()));
+for$Mneach(((line)=>{
+return (((($Gt(string$Mnlength(line),1))===false
+?(false)
+:(equal$Qu(string$Mntake(line,1),"!"))))===false
+?(((not(break$Qu))===false?undefined:((()=>{
+ctx.fillText(line,left$Mnmargin,$Mn(base,vertical$Mnscroll));
+return base=$Pl(base,line$Mnheight);
+;
+})())))
+:(((hatch)=>{
+return ((string$Eq$Qu(string$Mntake(hatch,string$Mnlength("image:")),"image:"))===false
+?(((with$Mnslot$Qu(interactions,hatch))===false?undefined:(((widget)=>{
+return (((($Gt($Mn(base,vertical$Mnscroll,$Mn(widget.height)),0))===false
+?(false)
+:($Ls($Mn(base,vertical$Mnscroll),window.innerHeight))))===false?undefined:((()=>{
+widget.render(ctx,left$Mnmargin,$Mn(base,vertical$Mnscroll));
+current$Mninteraction=widget;
+;
+base=$Pl(base,widget.height);
+;
+return ((not(widget.finished()))===false?undefined:((()=>{
+break$Qu=true;
+;
+return break$Qu=true;
+;
+})()));
+})()));
+})(slot$Mnref(interactions,hatch)))))
+:(((path)=>{
+return ((img)=>{
+return (()=>{
+ctx.drawImage(img,left$Mnmargin,$Mn(base,vertical$Mnscroll));
+return base=$Pl(base,img.height,line$Mnheight);
+;
+})();
+})(image(path));
+})(string$Mndrop(hatch,string$Mnlength("image:")))));
+})(string$Mndrop(line,1))));
+}),list$Mnref(chapters,current$Mnchapter));
+(((($Ls(current$Mnchapter,$Mn(length(chapters),1)))===false
+?(false)
+:(not(break$Qu))))===false?undefined:((()=>{
+ctx.fillText("🠞",$St(4,left$Mnmargin),$Mn(base,vertical$Mnscroll));
+nextarrow$Mnleft=$Mn($St(4,left$Mnmargin),10);
+;
+nextarrow$Mntop=$Mn(base,vertical$Mnscroll,10);
+;
+((arrow)=>{
+nextarrow$Mnwidth=$Pl(arrow.width,20);
+;
+return nextarrow$Mnheight=$Pl(arrow.emHeightAscent,20);
+;
+})(ctx.measureText("🠞"));
+return base=$Pl(base,line$Mnheight);
+;
+})()));
+return content$Mnheight=$Pl(base,line$Mnheight,top$Mnmargin);
+;
+})(top$Mnmargin,false);
+})();
+})(canvas.getContext("2d"));
+})(document.getElementById("canvas"));
+});
+
+window.addEventListener("resize",render)
+window.addEventListener("load",render)
+window.addEventListener("click",((event)=>{
+return (((($Ls$Eq(nextarrow$Mnleft,event.x,$Pl(nextarrow$Mnleft,nextarrow$Mnwidth)))===false
+?(false)
+:((($Ls$Eq(nextarrow$Mntop,event.y,$Pl(nextarrow$Mntop,nextarrow$Mnheight)))===false
+?(false)
+:($Ls($Pl(current$Mnchapter,1),length(chapters)))))))===false
+?((((($Ls$Eq(backarrow$Mnleft,event.x,$Pl(backarrow$Mnleft,backarrow$Mnwidth)))===false
+?(false)
+:((($Ls$Eq(backarrow$Mntop,event.y,$Pl(backarrow$Mntop,backarrow$Mnheight)))===false
+?(false)
+:($Gt$Eq($Mn(current$Mnchapter,1),0))))))===false?undefined:((()=>{
+current$Mnchapter=$Mn(current$Mnchapter,1);
+;
+vertical$Mnscroll=0;
+;
+return render();
+})())))
+:((()=>{
+current$Mnchapter=$Pl(current$Mnchapter,1);
+;
+vertical$Mnscroll=0;
+;
+return render();
+})()));
+}))
+document.addEventListener("wheel",((event)=>{
+vertical$Mnscroll=max($Mn(top$Mnmargin),min($Mn(content$Mnheight,window.innerHeight),$Mn(vertical$Mnscroll,event.wheelDeltaY)));
+;
+return render();
+}))
+document.addEventListener("keyup",((event)=>{
+return ((current$Mninteraction)===false?undefined:((()=>{
+current$Mninteraction.keyRelease(event.key);
+return render();
+})()));
+}))
+document.addEventListener("keydown",((event)=>{
+return ((current$Mninteraction)===false?undefined:((()=>{
+current$Mninteraction.keyPress(event.key);
+return render();
+})()));
+}))
